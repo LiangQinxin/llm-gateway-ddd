@@ -4,6 +4,7 @@ import cn.qx.api.dto.proxy.ProxyResult;
 import cn.qx.cases.proxy.IProxyCase;
 import cn.qx.cases.proxy.ProxyException;
 import cn.qx.domain.channel.model.valobj.ProxyRequest;
+import cn.qx.trigger.filter.ApiKeyFilter;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

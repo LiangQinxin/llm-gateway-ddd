@@ -25,35 +25,35 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * 安全规则管理 Controller（管理面 /admin/api/security/rules/**）。
+ * 安全规则管理 Controller（管理面 /api/v1/security/**）。
  */
 @RestController
-@RequestMapping("/admin/api/security/rules")
+@RequestMapping("/api/v1/security")
 public class SecurityRuleController {
 
     /** 安全规则用例：内置规则与自定义规则的管理编排。 */
     @Resource
     private ISecurityRuleCase securityRuleCase;
 
-    @GetMapping("/builtin")
+    @GetMapping("/rules/builtin")
     public Response<List<BuiltinRuleResult>> listBuiltin() {
         return Responses.success(securityRuleCase.listBuiltin());
     }
 
-    @PutMapping("/builtin/{ruleId}")
+    @PutMapping("/rules/builtin/{ruleId}")
     public Response<BuiltinRuleResult> updateBuiltin(
             @PathVariable("ruleId") String ruleId,
             @RequestBody BuiltinRuleUpdateRequest request) {
         return Responses.success(securityRuleCase.updateBuiltin(ruleId, request));
     }
 
-    @PostMapping("/builtin/reset")
+    @PostMapping("/rules/builtin/reset")
     public Response<Void> resetBuiltin() {
         securityRuleCase.resetBuiltin();
         return Responses.success(null);
     }
 
-    @GetMapping("/custom")
+    @GetMapping("/rules/custom")
     public Response<List<CustomRuleResult>> listCustom(
             @RequestParam(name = "ruleType", required = false) String ruleType) {
         return Responses.success(securityRuleCase.listCustom(ruleType));
@@ -66,26 +66,37 @@ public class SecurityRuleController {
         return Responses.success(securityRuleCase.listFindings(limit));
     }
 
-    @PostMapping("/custom")
+    @DeleteMapping("/findings/{id}")
+    public Response<Void> deleteFinding(@PathVariable("id") String id) {
+        securityRuleCase.deleteFinding(id);
+        return Responses.success(null);
+    }
+
+    @DeleteMapping("/findings/all")
+    public Response<Integer> clearFindings() {
+        return Responses.success(securityRuleCase.clearFindings());
+    }
+
+    @PostMapping("/rules/custom")
     public Response<CustomRuleResult> createCustom(@RequestBody CustomRuleRequest request) {
         return Responses.success(securityRuleCase.createCustom(request));
     }
 
-    @PutMapping("/custom/{id}")
+    @PutMapping("/rules/custom/{id}")
     public Response<CustomRuleResult> updateCustom(
             @PathVariable("id") String id,
             @RequestBody CustomRuleUpdateRequest request) {
         return Responses.success(securityRuleCase.updateCustom(id, request));
     }
 
-    @PatchMapping("/custom/{id}/enabled")
+    @PatchMapping("/rules/custom/{id}/enabled")
     public Response<CustomRuleResult> toggleCustom(
             @PathVariable("id") String id,
             @RequestBody ToggleRequest request) {
         return Responses.success(securityRuleCase.toggleCustom(id, request.isEnabled()));
     }
 
-    @DeleteMapping("/custom/{id}")
+    @DeleteMapping("/rules/custom/{id}")
     public Response<Void> deleteCustom(@PathVariable("id") String id) {
         securityRuleCase.deleteCustom(id);
         return Responses.success(null);

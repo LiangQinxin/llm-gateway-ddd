@@ -43,4 +43,10 @@ public interface ISecurityRuleCase {
 
     /** 按创建时间倒序取最近 N 条安全发现记录（管理面审计列表）。 */
     List<SecurityFindingResult> listFindings(int limit);
+
+    /** 删除安全发现记录。 */
+    void deleteFinding(String id);
+
+    /** 清空全部安全发现记录，返回删除条数。 */
+    int clearFindings();
 }

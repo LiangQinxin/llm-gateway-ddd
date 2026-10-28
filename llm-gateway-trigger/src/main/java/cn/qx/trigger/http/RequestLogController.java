@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 请求日志审计 Controller（管理面 /admin/api/logs）。
+ * 请求日志审计 Controller（管理面 /api/v1/logs）。
  */
 @RestController
-@RequestMapping("/admin/api/logs")
+@RequestMapping("/api/v1/logs")
 public class RequestLogController {
 
     /** 请求日志用例 */

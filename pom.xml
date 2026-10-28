@@ -22,6 +22,8 @@
     <maven.compiler.target>17</maven.compiler.target>
     <google.adk.version>0.5.0</google.adk.version>
     <okhttp.version>4.12.0</okhttp.version>
+    <!-- Lombok 锁新版本，兼容 JDK 21/23 编译（修复 JCImport.qualid NoSuchFieldError） -->
+    <lombok.version>1.18.36</lombok.version>
   </properties>
   <developers>
     <developer>

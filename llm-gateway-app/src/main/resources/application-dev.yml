@@ -79,3 +79,12 @@ logging:
   level:
     root: info
   config: classpath:logback-spring.xml
+
+# 管理面登录（硬编码单用户 + JWT 鉴权）
+login:
+  username: 123790321xyz
+  password: 321123790xyz
+  # JWT 签名密钥（生产环境务必替换为更长随机串）
+  jwt-secret: lqx-llm-gateway-jwt-secret-2026-please-change-in-prod
+  # 令牌有效期（分钟）
+  jwt-expire-minutes: 120

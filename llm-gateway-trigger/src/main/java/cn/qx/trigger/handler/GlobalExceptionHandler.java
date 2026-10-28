@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  */
 @Slf4j
 @RestControllerAdvice(basePackages = {
-        "cn.qx.trigger.channel",
-        "cn.qx.trigger.identity",
-        "cn.qx.trigger.audit"
+        "cn.qx.trigger.http",
+        "cn.qx.trigger.gateway"
 })
 public class GlobalExceptionHandler {
 

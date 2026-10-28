@@ -8,6 +8,7 @@ import cn.qx.api.response.Response;
 import cn.qx.api.response.Responses;
 import cn.qx.domain.channel.model.entity.Channel;
 import cn.qx.domain.channel.model.valobj.TestResult;
+import com.alibaba.fastjson2.JSON;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,10 +22,10 @@ import jakarta.annotation.Resource;
 import java.util.List;
 
 /**
- * 渠道管理 Controller（管理面 /admin/api/**）。
+ * 渠道管理 Controller（管理面 /api/v1/channels）。
  */
 @RestController
-@RequestMapping("/admin/api/channels")
+@RequestMapping("/api/v1/channels")
 public class ChannelController {
 
     /** 渠道用例 */
@@ -86,7 +87,7 @@ public class ChannelController {
                 .type(request.getType())
                 .baseUrl(request.getBaseUrl())
                 .apiKey(request.getApiKey())
-                .models(request.getModels())
+                .models(request.getModels() == null ? null : JSON.toJSONString(request.getModels()))
                 .status(request.getStatus())
                 .priority(request.getPriority())
                 .weight(request.getWeight())

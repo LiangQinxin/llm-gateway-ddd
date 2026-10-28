@@ -50,6 +50,16 @@ public class SecurityFindingRepository implements ISecurityFindingRepository {
                 .stream().map(SecurityFindingRepository::toRecord).toList();
     }
 
+    @Override
+    public int deleteById(String id) {
+        return mapper.deleteById(id);
+    }
+
+    @Override
+    public int clearAll() {
+        return mapper.deleteAll();
+    }
+
     private static SecurityFindingRecord toRecord(SecurityFindingPO po) {
         return SecurityFindingRecord.builder()
                 .id(po.getId())

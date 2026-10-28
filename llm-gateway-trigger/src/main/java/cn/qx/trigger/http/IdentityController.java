@@ -22,7 +22,7 @@ import java.util.List;
  * API Key 管理 Controller（管理面 /admin/api/keys）。
  */
 @RestController
-@RequestMapping("/admin/api/keys")
+@RequestMapping("/api/v1/api-keys")
 public class IdentityController {
 
     /** API Key 用例 */

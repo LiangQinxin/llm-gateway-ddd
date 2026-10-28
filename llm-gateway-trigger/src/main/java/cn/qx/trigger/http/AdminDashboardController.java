@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 管理后台仪表盘 Controller（管理面 /admin/api/dashboard）。
+ * 管理后台仪表盘 Controller（管理面 /api/v1/dashboard）。
  */
 @RestController
-@RequestMapping("/admin/api/dashboard")
+@RequestMapping("/api/v1/dashboard")
 public class AdminDashboardController {
 
     /** 仪表盘聚合用例 */

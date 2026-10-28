@@ -30,6 +30,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
+        <!-- JWT：管理面登录令牌签发与校验（auth0 java-jwt，Java 17 原生兼容） -->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

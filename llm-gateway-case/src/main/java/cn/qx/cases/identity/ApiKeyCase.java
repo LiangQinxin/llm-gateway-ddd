@@ -66,6 +66,7 @@ public class ApiKeyCase implements IApiKeyCase {
             throw new AppException(ResponseCode.ILLEGAL_PARAMETER.getCode(), "API Key ID 不能为空");
         }
         ApiKey current = get(apiKey.getId());
+        apiKey.setName(isBlank(apiKey.getName()) ? current.getName() : apiKey.getName());
         apiKey.setKey(isBlank(apiKey.getKey()) ? current.getKey() : apiKey.getKey());
         apiKey.setStatus(apiKey.getStatus() == null ? current.getStatus() : apiKey.getStatus());
         apiKey.setAllowedModels(defaultJson(apiKey.getAllowedModels()));

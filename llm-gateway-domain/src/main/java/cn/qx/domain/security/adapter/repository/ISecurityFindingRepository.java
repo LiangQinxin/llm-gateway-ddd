@@ -22,4 +22,10 @@ public interface ISecurityFindingRepository {
 
     /** 按创建时间倒序取最近 N 条安全发现（管理面审计列表）。 */
     List<SecurityFindingRecord> latest(int limit);
+
+    /** 按主键删除安全发现记录，返回删除行数。 */
+    int deleteById(String id);
+
+    /** 清空全部安全发现记录，返回删除行数。 */
+    int clearAll();
 }

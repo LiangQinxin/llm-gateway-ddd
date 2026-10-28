@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * 创建/更新渠道请求。
  */
@@ -22,8 +24,8 @@ public class ChannelRequest {
     private String baseUrl;
     /** 上游 API 密钥 */
     private String apiKey;
-    /** 启用模型列表（JSON 数组字符串，如 ["deepseek-chat","deepseek-flash"]） */
-    private String models;
+    /** 启用模型列表（字符串数组，与输出契约 ChannelView.models 对称；入库前序列化为 JSON 数组字符串） */
+    private List<String> models;
     /** 状态：1=启用，0=停用 */
     private Integer status;
     /** 优先级（数值越大优先级越高；路由按 priority DESC, weight DESC 排序） */

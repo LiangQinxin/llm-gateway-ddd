@@ -213,6 +213,25 @@ public class SecurityRuleCase implements ISecurityRuleCase {
                 .map(SecurityFindingResult::from).toList();
     }
 
+    @Override
+    public void deleteFinding(String id) {
+        if (isBlank(id)) {
+            throw illegal("安全发现 ID 不能为空");
+        }
+        int rows = securityFindingRepository.deleteById(id);
+        if (rows == 0) {
+            throw new AppException(ResponseCode.NOT_FOUND.getCode(), "安全发现不存在: " + id);
+        }
+        log.info("安全发现已删除: id={}", id);
+    }
+
+    @Override
+    public int clearFindings() {
+        int rows = securityFindingRepository.clearAll();
+        log.info("安全发现已全部清空: 删除 {} 条", rows);
+        return rows;
+    }
+
     private CustomRuleMeta requireCustom(String id) {
         CustomRuleMeta rule = customRuleRepository.getById(id);
         if (rule == null) {
